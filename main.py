@@ -1,16 +1,17 @@
-# This is a sample Python script.
+import pandas as pd
+T_hour_ori = pd.read_excel('C:\\Users\\11535\\Desktop\\MScproject\\OneDrive_2023-06-19\\YDelta.xlsx', usecols=[4], names=None)
+T_cycle1_ori = pd.read_excel('C:\\Users\\11535\\Desktop\\MScproject\\OneDrive_2023-06-19\\YDelta.xlsx', usecols=[5], names=None)
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+T_hour = T_hour_ori.dropna()
+T_cycle = T_cycle1_ori.dropna()
+T_hour = T_hour.reset_index(drop=True)
+T_cycle = T_cycle.reset_index(drop=True)
+
+# normalization
+T_hour = (T_hour) / (T_hour.max())
+T_cycle = (T_cycle) / (T_cycle.max())
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
